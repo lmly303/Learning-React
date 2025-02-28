@@ -73,7 +73,7 @@ export class Service{
     }
 
     // get single post method
-    async getPsot(slug){
+    async getPost(slug){
         try {
             await this.Databases.getDocument(
                 conf.appwriteDatabaseId,
