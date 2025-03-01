@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { Link, useNavigate } from 'react-router'
 import authService from '../appwrite/auth'
 import {login} from '../store/authSlice'
-import {Button, Input, Logo} from './index' 
+import {Button,Input, Logo} from './index' 
 import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
 
@@ -25,7 +25,7 @@ function SignUp() {
                 navigate("/")
             }
         } catch (error) {
-            setError(error.messgae)
+            setError(error.message)
         }
     }
 
@@ -53,7 +53,7 @@ function SignUp() {
                 <Input
                 label="Full Name: "
                 placeholder="Enter your Name"
-                {...register("Name",{
+                {...register("name",{
                     required: true
                 })}
                 />
@@ -61,7 +61,7 @@ function SignUp() {
                 label="Email: "
                 type="email"
                 placeholder="Enter your Email"
-                {...register("Email",{
+                {...register("email",{
                     required: true,
                     validate: {
                         matchPatern: (value)=> /^([\w\.\-_]+)?\w+@[\w-_]+(\.\w+){1,}$/.test(value) || "Email address must be a valid address"
@@ -72,13 +72,17 @@ function SignUp() {
                 label="Password"
                 type="password"
                 placeholder="Enter Your Password"
-                {...register("Password", {
+                {...register("password", {
                     required: true,
+                    minLength: {
+                        value: 6,
+                        message: "Password must be at least 6 characters"
+                    }
                 })}
                 />
                 <Button 
                 type='submit'
-                className='w-full'>Sign Up</Button>
+                className='w-full'>Create Account</Button>
             </div>
         </form>
         </div>
